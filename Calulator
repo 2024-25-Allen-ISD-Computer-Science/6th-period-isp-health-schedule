@@ -1,1 +1,37 @@
+# Calories burned per hour for each exercise (approximate values)
+exercise_calories = {
+   "Running": 600,
+   "Cycling": 500,
+   "Swimming": 700,
+   "Walking": 300,
+   "Yoga": 200
+}
 
+
+# User selects their desired exercise
+print("Please choose an exercise:")
+for idx, exercise in enumerate(exercise_calories, start=1):
+   print(f"{idx}. {exercise}")
+choice = int(input("Enter the exercise number: ")) - 1
+exercise_name = list(exercise_calories.keys())[choice]
+calories_per_hour = exercise_calories[exercise_name]
+
+
+# User inputs target weight loss and duration
+weight_loss_goal = float(input("Enter the weight you want to lose (kg): "))
+goal_days = int(input("Enter the target period (days): "))
+
+
+# Calculate total calories needed for weight loss goal
+total_calories_needed = weight_loss_goal * 7700
+
+
+# Calculate daily exercise requirement (in hours)
+daily_calories_needed = total_calories_needed / goal_days
+daily_hours = daily_calories_needed / calories_per_hour
+
+
+
+
+print(f"\nYou chose {exercise_name}.")
+print(f"To lose {weight_loss_goal} kg, you need to do {exercise_name} for approximately {daily_hours:.2f} hours per day.")
