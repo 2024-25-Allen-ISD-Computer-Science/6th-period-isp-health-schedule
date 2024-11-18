@@ -115,8 +115,8 @@ button {
 }
 
 .feature-img{
-  width: screen;
-  position: static;
+  width: 700px;
+  position: center;
   bottom: 0;
   right: 10%;
 }
