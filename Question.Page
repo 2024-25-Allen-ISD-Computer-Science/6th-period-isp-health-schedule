@@ -1,10 +1,84 @@
 <!DOCTYPE html>
 <html>
-<body>
+<head>
+    <title>Question Page</title>
+    <style>
+        .dropdown-container {
+            position: relative;
+            display: inline-block;
+            width: 200px;
+        }
 
-<h1>Let's find your exercise!!</h1>
-<p>My What type of exercise do you want?</p>
-<p> <input type="text"> </p>
+        .custom-select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            cursor: pointer;
+            background-color: #f0f0f0;
+        }
+
+        .dropdown-list {
+            display: none;
+            position: absolute;
+            top: 100%; /* Ensures the dropdown opens below */
+            left: 0;
+            width: 100%;
+            background-color: #ffffff;
+            border: 1px solid #ccc;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            max-height: 150px;
+            overflow-y: auto;
+        }
+
+        .dropdown-list div {
+            padding: 8px;
+            cursor: pointer;
+        }
+
+        .dropdown-list div:hover {
+            background-color: #ddd;
+        }
+
+        .dropdown-list.show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<p>
+    Let's answer the question for make your health schedule!!
+</p>
+
+<p>
+    What type of exercise do you want?
+</p>
+<form action="/action_page.php">
+<div class="dropdown-container">
+    <div class="custom-select" onclick="toggleDropdown()" id="selected-option">Click the box</div>
+    <div class="dropdown-list" id="dropdown">
+        <div onclick="selectOption(this)">Option 1</div>
+        <div onclick="selectOption(this)">Option 2</div>
+        <div onclick="selectOption(this)">Option 3</div>
+        <div onclick="selectOption(this)">Option 4</div>
+        <div onclick="selectOption(this)">Option 5</div>
+    </div>
+</div>
+</form>
+
+<script>
+function toggleDropdown() {
+    document.getElementById('dropdown').classList.toggle('show');
+}
+
+function selectOption(optionElement) {
+    // Set the selected option text in the custom-select element
+    document.getElementById('selected-option').innerText = optionElement.innerText;
+
+    // Close the dropdown after selection
+    document.getElementById('dropdown').classList.remove('show');
+}
+</script>
 
 </body>
 </html>
