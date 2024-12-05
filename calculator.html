@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>Health Schedule Website</title>
     <link rel="stylesheet" href="home.css">
 </head>
@@ -41,7 +40,7 @@
             const weight = parseFloat(document.getElementById("weight").value); // Weight to lose
             const days = parseInt(document.getElementById("days").value); // Target period
 
-            if (isNaN(weight) || isNaN(days) || days <= 0) {
+            if (isNaN(weight) || isNaN(days) || days <= 0) { // checking whether weight or days is a valid number
                 document.getElementById("result").innerText = "Please enter valid inputs.";
                 return;
             }
