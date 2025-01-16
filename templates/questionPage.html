@@ -1,11 +1,39 @@
 #python app.py --port=5001
 <!DOCTYPE html>
 <html lang="en">
+    turtle.Screen().bgcolor("orange")
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Plan Your Health Schedule</title>
 </head>
+<style>
+     body {
+         align-items: center;
+         justify-content: center;
+      background-color: lightblue;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+    
+    .exclamation-button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: yellow; /* 버튼 배경 색 */
+      border: none;
+      border-radius: 50%; /* 원형 버튼 */
+      width: 60px; /* 버튼 크기 */
+      height: 60px; /* 버튼 크기 */
+      font-size: 24px; /* 느낌표 크기 */
+      font-weight: bold;
+      color: black; /* 느낌표 색상 */
+      cursor: pointer; /* 손 모양 커서 */
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* 그림자 효과 */
+      transition: transform 0.2s; /* 클릭 애니메이션 */
+    }
+</style>
 <body>
     <h1>Plan Your Health Schedule</h1>
     <form action="/HealthScheduleCalculate" method="POST">
@@ -28,5 +56,11 @@
 
         <button type="submit">Submit</button>
     </form>
+    <button class="exclamation-button" onclick="showAlert()">!</button>
+    <script>
+    function showAlert() {
+      alert("The results shown on the schedule may not match the results due to your eating habits, etc.");
+    }
+  </script>
 </body>
 </html>
