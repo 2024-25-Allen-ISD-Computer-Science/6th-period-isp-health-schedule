@@ -2,16 +2,26 @@
 <html>
     <head>
         <link rel="stylesheet" href="home.css">
+        <link rel="" href="">
         <title> Health Schedule Website </title>
     </head>
     <body>
-      <ul>
-        <li><a href="home.html">Home </a></li>
-        <li><a href="exercise.html">Exercise</a></li>
-        <li><a href="diet.html">Diet</a></li>
-      </ul>
+      <div class="navbar">
+        <a class="active" href="diet.html"><i class="fa fa-fw fa-apple"></i> Diet</a> 
+        <a href="exercise.html"><i class="fa fa-fw fa-heart"></i> Exercise</a> 
+        <a href="home.html"><i class="fa fa-fw fa-home"></i> Home</a> 
+      </div>
 
-      <h1> diet </h1>
-           
+      <h1> your diet planner </h1>
+      <h3> meal planner </h3>
+      
+      <div id="list-container">
+      <input type="text" id="new-item-input" placeholder="Enter a new item" />
+      <button id="add-item-button">Add Item</button>
+      <ul id="dynamic-list">
+      <!-- dynamic list items will be added here -->
+      </ul>
+      </div>
+
         </body>
 </html>

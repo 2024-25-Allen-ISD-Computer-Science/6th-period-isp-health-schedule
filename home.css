@@ -10,6 +10,10 @@ body, html{
 
 }
 
+h1, h3, p{
+  color: darkolivegreen;
+}
+
 .button {
   display: inline-block;
   border-radius: 4px;
@@ -103,3 +107,7 @@ button {
     display: block;
   }
 }
+
+/* diet page */
+
+
