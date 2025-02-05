@@ -8,20 +8,51 @@
  <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.0/Sortable.min.js"></script>
 
     <style>
+       body {
+        font-family: Arial, sans-serif;
+      }
       #list-container {
         margin: 20px;
       }
       #new-item-input,
+      #calorie-input,
+      #meal-category,
       #add-item-button {
         margin-bottom: 10px;
       }
-      #dynamic-list li {
+      .meal-section {
+        margin-top: 20px;
+        padding: 10px;
+        border: 2px solid #ddd;
+        border-radius: 8px;
+        background-color: #f8f8f8;
+      }
+      .meal-section h3 {
+        text-align: center;
         background-color: #294104;
+        color: white;
+        padding: 5px;
+        border-radius: 4px;
+      }
+      .meal-list {
+        min-height: 50px;
+        padding: 10px;
+        list-style: none;
+      }
+      .meal-list li {
+        background-color: #fff;
         border: 1px solid #ddd;
         padding: 10px;
         margin-top: 5px;
-        cursor: grab; /* changing the cursor to grab*/
-        list-style: none;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: grab;
+      }
+      .meal-list input {
+        width: 60px;
+        margin-left: 10px;
+        text-align: center;
       }
     </style>
   </head>
@@ -33,14 +64,37 @@
     </div>
 
     <h1>Your Diet Planner</h1>
-    <h3>Meal Planner</h3>
-
     <div id="list-container">
-      <input type="text" id="new-item-input" placeholder="Enter a new item" />
-      <button id="add-item-button">Add Item</button>
-      <ul id="dynamic-list">
-        <!-- dynamic list items will be added here -->
-      </ul>
+      <input type="text" id="new-item-input" placeholder="Enter meal item" />
+      <input type="number" id="calorie-input" placeholder="Calories" min="0" />
+      <select id="meal-category">
+        <option value="breakfast-list">Breakfast</option>
+        <option value="lunch-list">Lunch</option>
+        <option value="dinner-list">Dinner</option>
+        <option value="snack-list">Snack</option>
+      </select>
+      <button id="add-item-button">Add Meal</button>
+    </div>
+
+    <!-- Meal Sections -->
+    <div class="meal-section">
+      <h3>Breakfast</h3>
+      <ul id="breakfast-list" class="meal-list"></ul>
+    </div>
+
+    <div class="meal-section">
+      <h3>Lunch</h3>
+      <ul id="lunch-list" class="meal-list"></ul>
+    </div>
+
+    <div class="meal-section">
+      <h3>Dinner</h3>
+      <ul id="dinner-list" class="meal-list"></ul>
+    </div>
+
+    <div class="meal-section">
+      <h3>Snack</h3>
+      <ul id="snack-list" class="meal-list"></ul>
     </div>
 
     <script>
@@ -49,45 +103,47 @@
         // Selecting elements
         var addButton = document.getElementById("add-item-button");
         var itemInput = document.getElementById("new-item-input");
-        var dynamicList = document.getElementById("dynamic-list");
+        var calorieInput = document.getElementById("calorie-input");
+        var mealCategory = document.getElementById("meal-category");
 
         // function adds a new item to the list
         function addNewItem() {
           // grabs the value from the input field
-          var newItemValue = itemInput.value.trim();
+          var mealName = itemInput.value.trim();
+          var calorieValue = calorieInput.value.trim();
+          var selectedCategory = document.getElementById(mealCategory.value);
 
           // checks if the input isnt empty
-          if (newItemValue) {
-            // creates a new list system element
+          if (mealName && calorieValue) {
             var listItem = document.createElement("li");
-            listItem.textContent = newItemValue;
+            listItem.innerHTML = `
+              <span>${mealName} - <strong>${calorieValue} kcal</strong></span>
+              <input type="number" value="${calorieValue}" min="0" />
+            `;
 
-            // appends the new list item to the dynamic list
-            dynamicList.appendChild(listItem);
-
-            // clears the input field for the next item
+            selectedCategory.appendChild(listItem);
             itemInput.value = "";
+            calorieInput.value = "";
           } else {
-            alert("Please enter an item.");
+            alert("Please enter a meal name and calorie amount.");
           }
         }
 
-        // adds an event listener (notified when event occurs) to the 'add item' button
         addButton.addEventListener("click", addNewItem);
-
-        // adds an event listener for the Enter key in the input field
         itemInput.addEventListener("keypress", function (event) {
           if (event.key === "Enter") {
             addNewItem();
           }
         });
 
-        // allows drag-and-drop sorting with SortableJS
-        new Sortable(dynamicList, {
-          animation: 150, // to create smooth dragging animation
-          ghostClass: "sortable-ghost" // adding a class to style the dragged item
+        // Enable Sortable for each meal section
+        ["breakfast-list", "lunch-list", "dinner-list", "snack-list"].forEach((id) => {
+          new Sortable(document.getElementById(id), {
+            animation: 150,
+            ghostClass: "sortable-ghost",
+            group: "meals",
+          });
         });
-
       });
     </script>
   </body>
