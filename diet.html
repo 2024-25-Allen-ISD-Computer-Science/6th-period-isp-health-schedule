@@ -4,6 +4,9 @@
     <link rel="stylesheet" href="home.css">
     <title>Health Schedule Website</title>
 
+ <!-- Include SortableJS from CDN -->
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.0/Sortable.min.js"></script>
+
     <style>
       #list-container {
         margin: 20px;
@@ -15,8 +18,10 @@
       #dynamic-list li {
         background-color: #294104;
         border: 1px solid #ddd;
-        padding: 5px;
+        padding: 10px;
         margin-top: 5px;
+        cursor: grab; /* changing the cursor to grab*/
+        list-style: none;
       }
     </style>
   </head>
@@ -76,6 +81,13 @@
             addNewItem();
           }
         });
+
+        // allows drag-and-drop sorting with SortableJS
+        new Sortable(dynamicList, {
+          animation: 150, // to create smooth dragging animation
+          ghostClass: "sortable-ghost" // adding a class to style the dragged item
+        });
+
       });
     </script>
   </body>
