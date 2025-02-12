@@ -146,5 +146,60 @@
         });
       });
     </script>
+  
+  <!--adding a calorie tracker-->
+  
+  <!--setting up the progress bar-->
+  <div id="calorie-tracker">
+    <h3>Calorie Tracker</h3>
+    <input type="number" id="calorie-goal" placeholder="Set calorie goal" min="0" />
+    <progress id="calorie-progress" value="0" max="2000"></progress>
+    <span id="calorie-status">0 / 2000 kcal</span>
+    <p id="calorie-message"></p>
+  </div>
+  
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var calorieGoalInput = document.getElementById("calorie-goal");
+      var calorieProgress = document.getElementById("calorie-progress");
+      var calorieStatus = document.getElementById("calorie-status");
+      var calorieMessage = document.getElementById("calorie-message");
+      // adding up the calories from all the other inputs on the page 
+      function updateCalorieProgress() {
+        var totalCalories = 0;
+        document.querySelectorAll(".meal-list input").forEach((input) => {
+          totalCalories += parseInt(input.value) || 0;
+        });
+       // if calorieGoalInput is empty, goal default is zero; converting string to int (parse)
+        var goal = parseInt(calorieGoalInput.value) || 2000;
+        // setting max value (that user sets) and actual value (that user has so far)
+        calorieProgress.max = goal;
+        calorieProgress.value = totalCalories;
+        // updates text to show progress
+        calorieStatus.textContent = `${totalCalories} / ${goal} kcal`;
+  
+        // updating the motivational message
+        // you get a message based on your progress to your goal
+        if (totalCalories >= goal) {
+          calorieMessage.textContent = "You hit your goal!";
+          calorieMessage.style.color = "green";
+        } else if (totalCalories >= goal * 0.5 && totalCalories <= goal * .75) {
+          calorieMessage.textContent = "You got this! Keep going!";
+          calorieMessage.style.color = "yellow";
+        }else if (totalCalories > goal * 0.75) {
+          calorieMessage.textContent = "You're almost there!";
+          calorieMessage.style.color = "orange";
+        } else {
+          calorieMessage.textContent = "Try adding some more items to reach your goal!";
+        }
+      }
+      // updates values
+      // when a meal is added, when you set/change goal, and when you manually reset the calorie values
+      document.getElementById("add-item-button").addEventListener("click", updateCalorieProgress);
+      document.getElementById("calorie-goal").addEventListener("input", updateCalorieProgress);
+      document.addEventListener("input", updateCalorieProgress);
+    });
+  </script>
+  
   </body>
 </html>
