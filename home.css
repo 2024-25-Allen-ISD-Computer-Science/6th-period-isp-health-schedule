@@ -1,38 +1,81 @@
-@import url('https://fonts.googleapis.com/css2?family=Lexend+Giga:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Giga:wght@100..900&display=swap');
 
-/* Set height of body and the document to 100% */
-body, html{
+/* General Page Styles */
+body, html {
   margin: 0;
-  margin-top:29px;
-  background-color:rgb(173, 193, 120);
-  height:1500px;
-  font-family: "Lexend Giga", serif;
-
+  padding: 0;
+  background-color: #f4f4f9;
+  font-family: "Lexend Giga", sans-serif;
 }
 
-h1, h3, p{
-  color: darkolivegreen;
-}
-
-.button {
-  display: inline-block;
-  border-radius: 4px;
-  background-color: rgb(107, 112, 92);
-  border: none;
-  color: rgb(white);
+/* Navbar Styles */
+.navbar {
+  background-color: #294104;
+  padding: 10px;
   text-align: center;
+}
+
+.navbar a {
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 17px;
+}
+
+.navbar a:hover {
+  background-color: #3b5e10;
+  border-radius: 5px;
+}
+
+.active {
+  background-color: #3b5e10;
+  border-radius: 5px;
+}
+
+@media screen and (max-width: 500px) {
+  .navbar a {
+    float: none;
+    display: block;
+  }
+}
+
+/* Heading Styles */
+h1 {
+  text-align: center;
+  color: #294104;
+  margin-top: 20px;
+}
+
+p {
+  text-align: center;
+  color: #333;
+  font-size: 18px;
+  margin: 10px auto;
+  width: 80%;
+  max-width: 600px;
+}
+
+/* Button Styles */
+.button {
+  display: block;
+  margin: 20px auto;
+  background-color: #294104;
+  color: white;
   font-size: 20px;
-  font-family: "Lexend Giga", serif;
-  padding: 20px;
-  width: 200px;
-  transition: all 0.5s;
-  cursor: pointer;
-  margin: 5px;
+  padding: 15px 30px;
+  border: none;
   border-radius: 6px;
+  cursor: pointer;
+  text-align: center;
+  transition: 0.3s;
+}
+
+.button:hover {
+  background-color: #3b5e10;
 }
 
 .button span {
-  cursor: pointer;
   display: inline-block;
   position: relative;
   transition: 0.5s;
@@ -56,58 +99,25 @@ h1, h3, p{
   right: 0;
 }
 
-/*center 'get started' button*/
-
+/* Centered Content Section */
 .container {
-  border: none;
-  height: 200px;
-  position: relative;
+  text-align: center;
+  margin-top: 30px;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 80%;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-button {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+/* Image Styling */
+.feature-img {
+  display: block;
+  margin: 20px auto;
+  width: 80%;
+  max-width: 600px;
+  border-radius: 10px;
 }
-
-.feature-img{
-  width: 700px;
-  position: center;
-  bottom: 0;
-  right: 10%;
-}
-
-/* for the nav bar at the top */
-
-.navbar {
-  width: 100%;
-  background-color: #555;
-  overflow: auto;
-}
-
-.navbar a {
-  float: left;
-  padding: 12px;
-  color: white;
-  text-decoration: none;
-  font-size: 17px;
-}
-
-.navbar a:hover {
-  background-color: #000;
-}
-
-.active {
-  background-color: #04AA6D;
-}
-
-@media screen and (max-width: 500px) {
-  .navbar a {
-    float: none;
-    display: block;
-  }
-}
-
-/* diet page */
-
-
