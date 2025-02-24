@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Confirm Schedule</title>
+</head>
+<body>
+  <h1>Warning</h1>
+  <p>Your BMR is lower than the calories you need to burn daily to meet your goal.</p>
+  <p>It is difficult to follow this schedule. Do you still want to continue?</p>
+
+  <form method="POST" action="/confirm_schedule">
+    <input type="hidden" name="exercise" value="{{ exercise }}">
+    <input type="hidden" name="days" value="{{ days }}">
+    <input type="hidden" name="weight_loss_kg" value="{{ weight_loss_kg }}">
+    <input type="hidden" name="hours_per_day" value="{{ hours_per_day }}">
+
+    <button type="submit" name="choice" value="yes">Yes</button>
+    <button type="submit" name="choice" value="no">No</button>
+  </form>
+</body>
+</html>
