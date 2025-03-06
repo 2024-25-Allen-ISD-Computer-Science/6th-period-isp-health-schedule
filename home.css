@@ -13,6 +13,7 @@ body, html {
   background-color: #294104;
   padding: 10px;
   text-align: center;
+  position: relative /* allowing to position navbar */
 }
 
 .navbar a {
@@ -31,6 +32,14 @@ body, html {
 .active {
   background-color: #3b5e10;
   border-radius: 5px;
+}
+
+/* Help Button Container */
+.help-button-container {
+  position: absolute;
+  right: 10px; /* Adjust as needed */
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 @media screen and (max-width: 500px) {
@@ -63,12 +72,15 @@ p {
   background-color: #294104;
   color: white;
   font-size: 20px;
-  padding: 15px 30px;
+  padding: 10px 20px; /* adjust as needed */
   border: none;
   border-radius: 6px;
   cursor: pointer;
   text-align: center;
   transition: 0.3s;
+  white-space: nowrap; /* prevent text from wrapping */
+  position: relative; /* needed for pseudoelement */
+  overflow: hidden; /* making sure the psuedoelement doesnt go over*/
 }
 
 .button:hover {
