@@ -79,8 +79,8 @@ p {
   text-align: center;
   transition: 0.3s;
   white-space: nowrap; /* prevent text from wrapping */
-  position: relative; /* needed for pseudoelement */
-  overflow: hidden; /* making sure the psuedoelement doesnt go over*/
+  position: relative; /* needed for element */
+  overflow: hidden; /* making sure the element doesnt go over*/
 }
 
 .button:hover {
