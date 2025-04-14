@@ -33,7 +33,7 @@
     </div>
 
   <h1>Let's check your BMR</h1>
-  <form method="POST" action="/" onsubmit="location.href='questionPage.html';">
+  <form method="POST" onsubmit="event.preventDefault(); location.href='questionPage.html';">
     <label for="gender">Gender:</label>
     <select id="gender" name="gender" required>
       <option value="woman">Woman</option>
