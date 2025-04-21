@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Schedule</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            margin-top: 50px;
+        }
+        .warning {
+            color: red;
+            margin-bottom: 50px;
+        }
+        @media print {
+            body {
+                height: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Health Schedule</h1>
+    <div class="spacer"></div>
+    <p>gender: </p>
+    <p>age: </p>
+    <p>heigh: </p>
+    <p>weight: </p>
+    <p>BMR: </p>
+    <p class="warning"  style="font-size: 24px;">You may not be able to reach your goals due to reasons such as your eating habits or lifestyle.&#9734</p>
+    <p>{{ message }}</p>
+</body>
+</html>

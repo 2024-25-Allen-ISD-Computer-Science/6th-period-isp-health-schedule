@@ -2,14 +2,14 @@ from flask import Flask, render_template, request, redirect, url_for
 
 app = Flask(__name__)
 
-# BMR 계산 함수
+# BMR Calculate
 def calculate_bmr(gender, weight, height, age):
     if gender == "woman":
         return 10 * weight + 6.25 * height - 5 * age - 161
     else:
         return 10 * weight + 6.25 * height - 5 * age + 5
 
-# 운동 시간 계산 함수
+# Exercise hour calculate
 def calculate_hours(exercise, days, weight_loss_kg):
     calories_per_hour = {
         "running": 600,
@@ -75,3 +75,14 @@ def confirm_schedule():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
+@app.route("/schedule_result", methods=["POST"])
+def schedule_result():
+    choice = request.form.get("choice")
+    exercise = request.form.get("exercise")
+    days = int(request.form.get("days"))
+    weight_loss_kg = float(request.form.get("weight_loss_kg"))
+    hours_per_day = float(request.form.get("hours_per_day"))
+
+    if choice == "print":
+        message = f"If you want to lose {weight_loss_kg}kg in {days} days by {exercise}, you have to do it for {hours_per_day} hours a day."
